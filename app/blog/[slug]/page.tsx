@@ -9,6 +9,8 @@ import { postBySlugQuery, allPostSlugsQuery } from "@/lib/sanityQueries";
 import { portableTextComponents } from "@/app/components/blog/PortableTextComponents";
 import { BlogPost } from "@/types/blog";
 
+const BASE_URL = "https://vyra.vercel.app";
+
 interface Props {
   params: { slug: string };
 }
@@ -36,11 +38,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: metaTitle,
     description: metaDescription,
+    alternates: {
+      canonical: `${BASE_URL}/blog/${params.slug}`,
+    },
     openGraph: {
       title: metaTitle,
       description: metaDescription,
       type: "article",
       publishedTime: post.publishedAt,
+      authors: post.author ? [post.author] : ["VYRA"],
+      url: `${BASE_URL}/blog/${params.slug}`,
+      siteName: "VYRA",
       ...(ogImageUrl && {
         images: [{ url: ogImageUrl, width: 1200, height: 630 }],
       }),
@@ -49,6 +57,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: "summary_large_image",
       title: metaTitle,
       description: metaDescription,
+      creator: "@vyrastore",
       ...(ogImageUrl && { images: [ogImageUrl] }),
     },
   };
@@ -71,8 +80,50 @@ export default async function BlogPostPage({ params }: Props) {
 
   if (!post) notFound();
 
+  const ogImageUrl = post.coverImage?.asset
+    ? urlFor(post.coverImage).width(1200).height(630).url()
+    : null;
+
+  // JSON-LD structured data for Google
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt || "",
+    author: {
+      "@type": "Person",
+      name: post.author || "VYRA",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "VYRA",
+      url: BASE_URL,
+    },
+    datePublished: post.publishedAt,
+    dateModified: post.publishedAt,
+    url: `${BASE_URL}/blog/${post.slug.current}`,
+    ...(ogImageUrl && {
+      image: {
+        "@type": "ImageObject",
+        url: ogImageUrl,
+        width: 1200,
+        height: 630,
+      },
+    }),
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${BASE_URL}/blog/${post.slug.current}`,
+    },
+  };
+
   return (
     <div className="min-h-screen bg-black text-white">
+      {/* JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       {/* Back */}
       <div className="max-w-3xl mx-auto px-6 pt-10">
         <Link
