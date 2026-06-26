@@ -1,0 +1,52 @@
+[
+  {
+    "productId": "1",
+    "title": "Printify Test Hoodie",
+    "description": "This is coming from a JSON file in FabricX (simulating Printify data). Replace this later with the real Printify description.",
+    "tags": ["hoodie", "printify", "test"],
+    "options": [
+      {
+        "name": "Color",
+        "type": "color",
+        "values": ["Black", "White"]
+      },
+      {
+        "name": "Size",
+        "type": "size",
+        "values": ["S", "M", "L", "XL"]
+      }
+    ],
+    "variants": [
+      {
+        "id": 101,
+        "sku": "HOODIE-BLK-S",
+        "title": "Black / S",
+        "price": 4000,
+        "is_available": true,
+        "is_default": true,
+        "options": [0, 0]
+      },
+      {
+        "id": 102,
+        "sku": "HOODIE-BLK-M",
+        "title": "Black / M",
+        "price": 4200,
+        "is_available": true,
+        "is_default": false,
+        "options": [0, 1]
+      }
+    ],
+    "images": [
+      {
+        "src": "https://via.placeholder.com/600x600?text=Printify+Hoodie+Front",
+        "position": "front",
+        "is_default": true
+      },
+      {
+        "src": "https://via.placeholder.com/600x600?text=Printify+Hoodie+Back",
+        "position": "back",
+        "is_default": false
+      }
+    ]
+  }
+]
