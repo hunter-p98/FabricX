@@ -133,8 +133,41 @@ export default function HomeClient({ initialProducts }: Props) {
 
   if (loading && allProducts.length === 0) {
     return (
-      <main className="min-h-screen flex items-center justify-center bg-gray-50 text-black">
-        <p className="text-sm text-gray-600">Loading products...</p>
+      <main className="min-h-screen bg-gray-50 text-black">
+        <header className="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-40 w-full">
+          <div className="flex items-center justify-between px-3 py-2">
+            <div className="flex items-center gap-2">
+              <div className="w-7 h-7 bg-gray-200 rounded animate-pulse" />
+              <div className="w-16 h-5 bg-gray-200 rounded animate-pulse" />
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-16 h-7 bg-gray-200 rounded animate-pulse" />
+              <div className="w-7 h-7 bg-gray-200 rounded-full animate-pulse" />
+              <div className="w-7 h-7 bg-gray-200 rounded-full animate-pulse" />
+            </div>
+          </div>
+          <div className="px-3 pb-2">
+            <div className="w-full h-8 bg-gray-200 rounded-full animate-pulse" />
+          </div>
+        </header>
+        <div className="p-3">
+          <div className="w-40 h-5 bg-gray-200 rounded animate-pulse mb-2" />
+          <div className="w-64 h-3 bg-gray-100 rounded animate-pulse mb-4" />
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+            {[...Array(8)].map((_, i) => (
+              <div key={i} className="border border-gray-100 p-2 rounded-lg bg-white animate-pulse">
+                <div className="w-full h-28 bg-gray-200 rounded mb-2" />
+                <div className="h-3 bg-gray-200 rounded w-3/4 mb-1" />
+                <div className="h-3 bg-gray-200 rounded w-1/2 mb-2" />
+                <div className="h-3 bg-gray-200 rounded w-1/4 mb-2" />
+                <div className="flex gap-1">
+                  <div className="flex-1 h-7 bg-gray-200 rounded" />
+                  <div className="flex-1 h-7 bg-gray-200 rounded" />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </main>
     );
   }
