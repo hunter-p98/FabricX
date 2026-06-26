@@ -4,7 +4,7 @@ import { CurrencyProvider } from "./CurrencyContext";
 import { CartProvider } from "./CartContext";
 import { ProductsProvider } from "./ProductsContext";
 
-const BASE_URL = "https://your-domain.com";
+const BASE_URL = "https://vyra.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
@@ -23,6 +23,8 @@ export const metadata: Metadata = {
     "premium streetwear",
     "custom clothing",
     "online fashion store",
+    "dark aesthetic clothing",
+    "independent streetwear brand",
   ],
   authors: [{ name: "VYRA", url: BASE_URL }],
   creator: "VYRA",
@@ -74,6 +76,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="canonical" href={BASE_URL} />
+        <meta name="theme-color" content="#000000" />
+        <meta name="application-name" content="VYRA" />
+        <link rel="icon" href="/favicon.ico" />
+      </head>
       <body>
         <CurrencyProvider>
           <CartProvider>
