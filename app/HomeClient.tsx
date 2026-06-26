@@ -60,6 +60,7 @@ const categories: Category[] = [
 
 const infoLinks = [
   { label: "About VYRA", path: "/about", icon: "ℹ️" },
+  { label: "Blog", path: "/blog", icon: "✍️" },
   { label: "Shipping Policy", path: "/shipping-policy", icon: "🚚" },
   { label: "Refund Policy", path: "/refund-policy", icon: "↩️" },
   { label: "Privacy Policy", path: "/privacy-policy", icon: "🔒" },

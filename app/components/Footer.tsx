@@ -34,6 +34,7 @@ export default function Footer() {
           <p className="text-xs font-semibold tracking-widest uppercase text-gray-400 mb-4">Info</p>
           <ul className="space-y-3">
             <li><button onClick={() => router.push("/about")} className="text-sm text-gray-400 hover:text-white transition-colors">About VYRA</button></li>
+            <li><button onClick={() => router.push("/blog")} className="text-sm text-gray-400 hover:text-white transition-colors">Blog</button></li>
             <li><button onClick={() => router.push("/contact")} className="text-sm text-gray-400 hover:text-white transition-colors">Contact Us</button></li>
             <li><button onClick={() => router.push("/orders")} className="text-sm text-gray-400 hover:text-white transition-colors">Orders</button></li>
             <li><button onClick={() => router.push("/refund-policy")} className="text-sm text-gray-400 hover:text-white transition-colors">Refund Policy</button></li>
