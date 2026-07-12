@@ -16,7 +16,8 @@ async function getAllProducts(): Promise<ProductLite[]> {
     });
     if (!res.ok) return [];
     const data = await res.json();
-    return (data.products ?? data ?? []) as ProductLite[];
+    const candidate = data?.products ?? data;
+    return Array.isArray(candidate) ? (candidate as ProductLite[]) : [];
   } catch {
     return [];
   }
@@ -83,3 +84,4 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return [...staticRoutes, ...productRoutes, ...blogRoutes];
 }
+
