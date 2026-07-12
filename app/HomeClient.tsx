@@ -420,13 +420,13 @@ export default function HomeClient({ initialProducts }: Props) {
                   <div className="flex gap-1 mt-1">
                     <button
                       onClick={(e) => { e.stopPropagation(); handleAddToCart(p); }}
-                      className="flex-1 bg-black text-white py-1 px-1 rounded text-[10px] font-semibold"
+                      className="flex-1 bg-black text-white py-0.5 px-0.5 rounded text-[9px] font-semibold md:py-1.5 md:px-2 md:text-xs"
                     >
                       Add to Cart
                     </button>
                     <button
                       onClick={(e) => { e.stopPropagation(); openProductPage(p.id); }}
-                      className="flex-1 bg-black text-white py-1 px-1 rounded text-[10px] font-semibold"
+                      className="flex-1 bg-black text-white py-0.5 px-0.5 rounded text-[9px] font-semibold md:py-1.5 md:px-2 md:text-xs"
                     >
                       Order Now
                     </button>
@@ -440,3 +440,4 @@ export default function HomeClient({ initialProducts }: Props) {
     </main>
   );
 }
+
