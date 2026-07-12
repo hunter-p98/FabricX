@@ -61,6 +61,7 @@ const categories: Category[] = [
 const infoLinks = [
   { label: "About VYRA", path: "/about", icon: "ℹ️" },
   { label: "Blog", path: "/blog", icon: "✍️" },
+  { label: "Contact Us", path: "/contact", icon: "📧" },
   { label: "Shipping Policy", path: "/shipping-policy", icon: "🚚" },
   { label: "Refund Policy", path: "/refund-policy", icon: "↩️" },
   { label: "Privacy Policy", path: "/privacy-policy", icon: "🔒" },
@@ -82,6 +83,77 @@ function deriveCategory(title: string, tags: string[] | undefined): CategoryName
   if (hasTag("dress") || hasTag("skirt")) return "Dresses & Skirts";
   if (hasTag("kid") || hasTag("baby") || hasTag("toddler")) return "Kids & Baby Clothing";
   return "T-shirts";
+}
+
+function NewsletterBox() {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [message, setMessage] = useState("");
+
+  const handleSubscribe = async () => {
+    if (!email.trim()) {
+      setStatus("error");
+      setMessage("Enter your email");
+      return;
+    }
+
+    setStatus("loading");
+    setMessage("");
+
+    try {
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok || !data.success) {
+        setStatus("error");
+        setMessage(data.error || "Something went wrong");
+        return;
+      }
+
+      setStatus("success");
+      setMessage("Subscribed!");
+      setEmail("");
+    } catch {
+      setStatus("error");
+      setMessage("Something went wrong");
+    }
+  };
+
+  return (
+    <div className="border-t border-gray-100 mt-4 pt-3 px-2">
+      <p className="text-xs text-gray-400 uppercase tracking-widest mb-2">Stay Updated</p>
+      <div className="flex flex-col gap-1.5">
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => {
+            setEmail(e.target.value);
+            if (status !== "idle") setStatus("idle");
+          }}
+          placeholder="your@email.com"
+          disabled={status === "loading"}
+          className="w-full border border-gray-300 rounded px-2 py-1.5 text-xs outline-none focus:border-black transition-colors disabled:opacity-50"
+        />
+        <button
+          onClick={handleSubscribe}
+          disabled={status === "loading"}
+          className="w-full bg-black text-white py-1.5 rounded text-xs font-semibold hover:bg-gray-900 transition-colors disabled:opacity-50"
+        >
+          {status === "loading" ? "..." : "Subscribe"}
+        </button>
+      </div>
+      {message && (
+        <p className={`text-xs mt-1.5 ${status === "success" ? "text-green-600" : "text-red-500"}`}>
+          {message}
+        </p>
+      )}
+    </div>
+  );
 }
 
 export default function HomeClient({ initialProducts }: Props) {
@@ -260,6 +332,7 @@ export default function HomeClient({ initialProducts }: Props) {
                 ))}
               </ul>
             </div>
+            <NewsletterBox />
           </div>
         </div>
       )}
@@ -302,6 +375,7 @@ export default function HomeClient({ initialProducts }: Props) {
                   ))}
                 </ul>
               </div>
+              <NewsletterBox />
             </>
           )}
         </aside>

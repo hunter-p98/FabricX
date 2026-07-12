@@ -11,7 +11,9 @@ export default function ContactPage(): JSX.Element {
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [submitError, setSubmitError] = useState("");
 
   const validate = () => {
     const newErrors: Record<string, string> = {};
@@ -24,9 +26,33 @@ export default function ContactPage(): JSX.Element {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!validate()) return;
-    setSubmitted(true);
+
+    setSubmitting(true);
+    setSubmitError("");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, subject, message }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok || !data.success) {
+        setSubmitError(data.error || "Something went wrong. Please try again.");
+        setSubmitting(false);
+        return;
+      }
+
+      setSubmitted(true);
+    } catch {
+      setSubmitError("Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -112,18 +138,23 @@ export default function ContactPage(): JSX.Element {
                 {errors.message && <p className="text-xs text-red-500 mt-1">{errors.message}</p>}
               </div>
 
+              {submitError && (
+                <p className="text-sm text-red-500 bg-red-50 border border-red-200 rounded-md px-3 py-2">{submitError}</p>
+              )}
+
               <button
                 onClick={handleSubmit}
-                className="w-full bg-black text-white py-3 rounded-lg text-sm font-semibold hover:bg-gray-900 transition-colors"
+                disabled={submitting}
+                className="w-full bg-black text-white py-3 rounded-lg text-sm font-semibold hover:bg-gray-900 transition-colors disabled:opacity-50"
               >
-                Send Message
+                {submitting ? "Sending..." : "Send Message"}
               </button>
             </div>
 
             {/* Contact Info */}
             <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
               {[
-                { icon: "📧", label: "Email", value: "support@vyra.com" },
+                { icon: "📧", label: "Email", value: "vyrastore07@gmail.com" },
                 { icon: "⏰", label: "Response Time", value: "Within 24 hours" },
                 { icon: "📦", label: "Order Issues", value: "Priority support" },
               ].map((item) => (
