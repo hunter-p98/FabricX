@@ -78,6 +78,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="canonical" href={BASE_URL} />
+        <meta name="google-site-verification" content="R-YhPaIsZtHPY6_fue0BqKgh4QOYpM0tHYVy6cdptIY" />
         <meta name="theme-color" content="#000000" />
         <meta name="application-name" content="VYRA" />
         <link rel="icon" href="/favicon.ico" />
@@ -92,3 +93,4 @@ export default function RootLayout({
     </html>
   );
 }
+
