@@ -7,7 +7,7 @@ import Footer from "@/app/components/Footer";
 import { client, urlFor } from "@/lib/sanityClient";
 import { postBySlugQuery, allPostSlugsQuery } from "@/lib/sanityQueries";
 import { portableTextComponents } from "@/app/components/blog/PortableTextComponents";
-import { BlogPost } from "@/types/blog";
+import { BlogPost } from "@/lib/types/blog";
 
 const BASE_URL = "https://vyra.vercel.app";
 

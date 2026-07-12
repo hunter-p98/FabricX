@@ -18,7 +18,7 @@ type ColorSwatch = {
   hex?: string;
 };
 
-export default function ProductPage(): JSX.Element {
+export default function ProductPage(): React.ReactElement {
   const router = useRouter();
   const params = useParams<{ id: string }>();
   const { addItem, toggleWishlist, isInWishlist } = useCart();

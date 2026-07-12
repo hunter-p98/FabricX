@@ -7,7 +7,7 @@ import { useCart } from "../CartContext";
 import { useCurrency } from "../CurrencyContext";
 import { useProducts } from "../ProductsContext";
 
-export default function WishlistPage(): JSX.Element {
+export default function WishlistPage(): React.ReactElement {
   const router = useRouter();
   const { wishlist, toggleWishlist, isInWishlist, addItem } = useCart();
   const { products } = useProducts();
@@ -24,6 +24,7 @@ export default function WishlistPage(): JSX.Element {
 
     addItem({
       id: String(p.id),
+      variant_id: 0,
       name: p.title,
       price: firstVariantPrice,
       size: "Default",
@@ -135,3 +136,5 @@ export default function WishlistPage(): JSX.Element {
     </main>
   );
 }
+
+

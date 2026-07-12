@@ -5,7 +5,7 @@ import { Suspense } from "react";
 import Footer from "@/app/components/Footer";
 import { client, urlFor } from "@/lib/sanityClient";
 import { allPostsQuery } from "@/lib/sanityQueries";
-import { BlogPost } from "@/types/blog";
+import { BlogPost } from "@/lib/types/blog";
 
 export const metadata: Metadata = {
   title: "Blog – VYRA",

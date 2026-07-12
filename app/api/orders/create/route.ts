@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { saveOrder, StoredOrder } from "../../../../lib/orders-store";
-
+import { saveOrder, StoredOrder } from "../../../lib/orders-store";
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();

@@ -47,7 +47,7 @@ export const portableTextComponents: PortableTextComponents = {
       const href = value?.href || "#";
       const isExternal = href.startsWith("http");
       return (
-        
+          <a
           href={href}
           target={value?.blank || isExternal ? "_blank" : "_self"}
           rel={isExternal ? "noopener noreferrer" : undefined}

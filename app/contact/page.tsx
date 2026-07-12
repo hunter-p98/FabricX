@@ -4,7 +4,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-export default function ContactPage(): JSX.Element {
+export default function ContactPage(): React.ReactElement {
   const router = useRouter();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");

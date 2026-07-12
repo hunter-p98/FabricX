@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useCurrency } from "../CurrencyContext";
 
@@ -57,7 +57,7 @@ const STATUS_DESCRIPTIONS: Record<OrderStatus, string> = {
   CANCELLED: "This order has been cancelled.",
 };
 
-export default function OrderStatusPage(): JSX.Element {
+function OrderStatusPageContent(): React.ReactElement {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { format, currency, setCurrency } = useCurrency();
@@ -270,5 +270,14 @@ export default function OrderStatusPage(): JSX.Element {
         </div>
       </section>
     </main>
+  );
+}
+
+
+export default function OrderStatusPage(): React.ReactElement {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center text-sm text-gray-500">Loading order status...</div>}>
+      <OrderStatusPageContent />
+    </Suspense>
   );
 }

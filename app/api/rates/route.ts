@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-export const revalidate = 60 * 60; // cache for 1 hour
+export const revalidate = 3600; // cache for 1 hour
 
 export async function GET() {
   const url = process.env.FX_API_URL;
@@ -56,3 +56,4 @@ export async function GET() {
     );
   }
 }
+

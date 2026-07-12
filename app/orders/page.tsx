@@ -1,7 +1,7 @@
 // app/orders/page.tsx
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useCurrency } from "../CurrencyContext";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
@@ -36,7 +36,7 @@ type StoredOrder = {
 
 const ORDERS_KEY = "vyra_orders_v1";
 
-export default function OrdersPage(): JSX.Element {
+function OrdersPageContent(): React.ReactElement {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { format, currency, setCurrency } = useCurrency();
@@ -281,5 +281,14 @@ export default function OrdersPage(): JSX.Element {
         })}
       </section>
     </main>
+  );
+}
+
+
+export default function OrdersPage(): React.ReactElement {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center text-sm text-gray-500">Loading orders...</div>}>
+      <OrdersPageContent />
+    </Suspense>
   );
 }

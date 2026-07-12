@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 
-export default function AboutPage(): JSX.Element {
+export default function AboutPage(): React.ReactElement {
   const router = useRouter();
 
   return (

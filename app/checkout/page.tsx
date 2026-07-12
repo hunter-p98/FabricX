@@ -11,7 +11,7 @@ declare global {
   }
 }
 
-export default function CheckoutPage(): JSX.Element {
+export default function CheckoutPage(): React.ReactElement {
   const router = useRouter();
   const { cart, clearCart } = useCart();
   const { format } = useCurrency();

@@ -16,7 +16,7 @@ function resolveOptionId(raw: any): number | null {
   return null;
 }
 
-export default function ProductPageClient(): JSX.Element {
+export default function ProductPageClient(): React.ReactElement {
   const router = useRouter();
   const params = useParams<{ id: string }>();
   const { addItem, toggleWishlist, isInWishlist } = useCart();

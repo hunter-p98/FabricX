@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { updateOrderByPrintifyId, OrderStatus } from "../../../../lib/orders-store";
+import { updateOrderByPrintifyId, OrderStatus } from "../../../lib/orders-store";
 
 function mapPrintifyEvent(event: string): OrderStatus | null {
   switch (event) {

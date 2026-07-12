@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useCart } from "../CartContext";
 import { useCurrency } from "../CurrencyContext";
 
-export default function CartPage(): JSX.Element {
+export default function CartPage(): React.ReactElement {
   const router = useRouter();
   const { cart, updateQuantity, removeItem } = useCart();
   const { format } = useCurrency();
@@ -138,3 +138,4 @@ export default function CartPage(): JSX.Element {
     </main>
   );
 }
+

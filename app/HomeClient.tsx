@@ -29,7 +29,7 @@ type CategoryName =
   | "Dresses & Skirts"
   | "Kids & Baby Clothing";
 
-type Category = { name: CategoryName; icon: JSX.Element };
+type Category = { name: CategoryName; icon: React.ReactElement };
 
 type UiProduct = {
   id: string;
