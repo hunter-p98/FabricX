@@ -4,7 +4,7 @@ import { CurrencyProvider } from "./CurrencyContext";
 import { CartProvider } from "./CartContext";
 import { ProductsProvider } from "./ProductsContext";
 
-const BASE_URL = "https://vyra.vercel.app";
+const BASE_URL = "https://vyrastore.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),

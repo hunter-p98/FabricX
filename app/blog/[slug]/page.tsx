@@ -9,7 +9,7 @@ import { postBySlugQuery, allPostSlugsQuery } from "@/lib/sanityQueries";
 import { portableTextComponents } from "@/app/components/blog/PortableTextComponents";
 import { BlogPost } from "@/lib/types/blog";
 
-const BASE_URL = "https://vyra.vercel.app";
+const BASE_URL = "https://vyrastore.vercel.app";
 
 interface Props {
   params: { slug: string };
@@ -220,3 +220,4 @@ export default async function BlogPostPage({ params }: Props) {
     </div>
   );
 }
+

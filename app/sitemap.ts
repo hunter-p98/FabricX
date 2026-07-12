@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { client } from "@/lib/sanityClient";
 import { allPostSlugsQuery } from "@/lib/sanityQueries";
 
-const BASE_URL = "https://vyra.vercel.app";
+const BASE_URL = "https://vyrastore.vercel.app";
 
 type ProductLite = {
   id: string | number;

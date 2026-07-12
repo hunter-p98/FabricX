@@ -15,6 +15,6 @@ export default function robots(): MetadataRoute.Robots {
         ],
       },
     ],
-    sitemap: "https://vyra.vercel.app/sitemap.xml",
+    sitemap: "https://vyrastore.vercel.app/sitemap.xml",
   };
 }
