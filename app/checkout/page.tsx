@@ -65,7 +65,7 @@ export default function CheckoutPage(): React.ReactElement {
       const razorpayRes = await fetch("/api/razorpay/create-order", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ amount: subtotalUSD, currency: "USD" }),
+        body: JSON.stringify({ amount: subtotalUSD }),
       });
 
       if (!razorpayRes.ok) {
@@ -276,3 +276,4 @@ export default function CheckoutPage(): React.ReactElement {
     </main>
   );
 }
+
