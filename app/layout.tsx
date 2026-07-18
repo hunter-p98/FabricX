@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 import { CurrencyProvider } from "./CurrencyContext";
 import { CartProvider } from "./CartContext";
@@ -87,6 +88,18 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
       </head>
       <body>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-RQSHXNECHD"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-RQSHXNECHD');
+          `}
+        </Script>
         <CurrencyProvider>
           <CartProvider>
             <ProductsProvider>{children}</ProductsProvider>
