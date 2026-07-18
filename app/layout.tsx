@@ -82,6 +82,9 @@ export default function RootLayout({
         <meta name="theme-color" content="#000000" />
         <meta name="application-name" content="VYRA" />
         <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+        <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
       </head>
       <body>
         <CurrencyProvider>
