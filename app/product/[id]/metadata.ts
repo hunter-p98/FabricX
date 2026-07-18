@@ -50,7 +50,7 @@ export async function generateMetadata({
   } catch {
     return {
       title: "Product | VYRA",
-      description: "Shop premium streetwear at VYRA.",
+     description: "Shop VYRA - wear love, wear memories.",
     };
   }
 }

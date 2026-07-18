@@ -54,7 +54,7 @@ export default function Footer() {
             VYRA
           </h2>
           <p className="text-sm text-gray-400 leading-relaxed max-w-[200px]">
-            Premium streetwear, printed on demand. No excess. No waste. Just fabric and intent.
+           Wear love. Wear memories. Printed on demand, shipped with intent.
           </p>
         </div>
 

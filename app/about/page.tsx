@@ -27,7 +27,7 @@ export default function AboutPage(): React.ReactElement {
         </h2>
         <p className="text-gray-500 text-lg leading-relaxed">
           VYRA was built for people who don't follow trends — they set them.
-          We make premium streetwear that's printed on demand, shipped
+          We turn your favorite moments into wearable pieces, printed on demand, shipped
           worldwide, and designed to last beyond the season.
         </p>
       </section>

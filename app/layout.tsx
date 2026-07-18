@@ -9,21 +9,21 @@ const BASE_URL = "https://vyrastore.vercel.app";
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "VYRA – Premium Streetwear & Print-On-Demand Fashion",
+    default: "VYRA - Wear Love. Wear Memories.",
     template: "%s | VYRA",
   },
   description:
-    "Shop VYRA for premium streetwear, graphic tees, hoodies, and more. Printed on demand, shipped worldwide. Fresh drops, multi-currency checkout.",
+    "VYRA turns your favorite moments into wearable pieces. Custom graphic tees, hoodies, and more, printed on demand and shipped worldwide.",
   keywords: [
     "streetwear",
     "print on demand",
     "graphic tees",
     "hoodies",
     "VYRA",
-    "premium streetwear",
     "custom clothing",
     "online fashion store",
-    "dark aesthetic clothing",
+    "personalized clothing",
+    "wear love wear memories",
     "independent streetwear brand",
   ],
   authors: [{ name: "VYRA", url: BASE_URL }],
@@ -44,23 +44,23 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: BASE_URL,
     siteName: "VYRA",
-    title: "VYRA – Premium Streetwear & Print-On-Demand Fashion",
+    title: "VYRA - Wear Love. Wear Memories.",
     description:
-      "Shop VYRA for premium streetwear, graphic tees, hoodies, and more. Printed on demand, shipped worldwide.",
+      "VYRA turns your favorite moments into wearable pieces. Printed on demand, shipped worldwide.",
     images: [
       {
         url: `${BASE_URL}/og-image.jpg`,
         width: 1200,
         height: 630,
-        alt: "VYRA – Premium Streetwear",
+        alt: "VYRA - Wear Love. Wear Memories.",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "VYRA – Premium Streetwear & Print-On-Demand Fashion",
+    title: "VYRA - Wear Love. Wear Memories.",
     description:
-      "Shop VYRA for premium streetwear, graphic tees, hoodies, and more. Printed on demand, shipped worldwide.",
+      "VYRA turns your favorite moments into wearable pieces. Printed on demand, shipped worldwide.",
     images: [`${BASE_URL}/og-image.jpg`],
     creator: "@vyrastore",
   },
@@ -93,4 +93,3 @@ export default function RootLayout({
     </html>
   );
 }
-
